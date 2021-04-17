@@ -30,7 +30,7 @@ def get_image_vector():
     return {"features" : features.tolist()}
 
 
-@app.route('/hello', methods=['POST'])
+@app.route('/hello', methods=['GET','POST'])
 def hello():
     return "hello"
 
