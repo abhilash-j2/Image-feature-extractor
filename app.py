@@ -30,9 +30,10 @@ def get_image_vector():
     return {"features" : features.tolist()}
 
 
-
-
+@app.route('/hello', methods=['POST'])
+def hello():
+    return "hello"
 
 
 if __name__ == '__main__':
-   app.run(debug = True, port=5001 )
+   app.run(debug = True )
