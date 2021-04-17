@@ -17,6 +17,7 @@ def preprocess_img(img):
   img = tf.image.convert_image_dtype(img, tf.float32)[tf.newaxis,...]
   return img
 
+model = load_model()
 @app.route('/get-features', methods=['POST'])
 def get_image_vector():
     model = load_model()
