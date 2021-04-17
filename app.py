@@ -21,8 +21,7 @@ def preprocess_img(img):
 def get_image_vector():
     model = load_model()
     request_data = request.get_json()
-    image = np.array(request_data['image'])
-    img = image.copy()
+    img = np.array(request_data['image'])
     img = preprocess_img(img)
     features = model(img)
     features = np.squeeze(features)
@@ -35,4 +34,8 @@ def hello():
 
 
 if __name__ == '__main__':
+<<<<<<< HEAD
    app.run(debug = True)
+=======
+   app.run(debug = True )
+>>>>>>> 572a1b020a7f3621279cc90f87f4bc02a7060024
