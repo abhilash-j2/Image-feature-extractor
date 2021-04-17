@@ -16,12 +16,13 @@ def preprocess_img(img):
   img = tf.image.resize_with_pad(img,224,224)
   img = tf.image.convert_image_dtype(img, tf.float32)[tf.newaxis,...]
   return img
-
+c
 @app.route('/get-features', methods=['POST'])
 def get_image_vector():
     model = load_model()
     request_data = request.get_json()
-    img = np.array(request_data['image'])
+    image = np.array(request_data['image'])
+    img = image.copy()
     img = preprocess_img(img)
     features = model(img)
     features = np.squeeze(features)
@@ -32,10 +33,5 @@ def get_image_vector():
 def hello():
     return "hello"
 
-
 if __name__ == '__main__':
-<<<<<<< HEAD
    app.run(debug = True)
-=======
-   app.run(debug = True )
->>>>>>> 572a1b020a7f3621279cc90f87f4bc02a7060024
