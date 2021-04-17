@@ -17,10 +17,9 @@ def preprocess_img(img):
   img = tf.image.convert_image_dtype(img, tf.float32)[tf.newaxis,...]
   return img
 
-model = load_model()
-
 @app.route('/get-features', methods=['POST'])
 def get_image_vector():
+    model = load_model()
     request_data = request.get_json()
     image = np.array(request_data['image'])
     img = image.copy()
@@ -30,10 +29,10 @@ def get_image_vector():
     return {"features" : features.tolist()}
 
 
-@app.route('/hello', methods=['POST'])
+@app.route('/hello', methods=['GET','POST'])
 def hello():
     return "hello"
 
 
 if __name__ == '__main__':
-   app.run(debug = True )
+   app.run(debug = True)
